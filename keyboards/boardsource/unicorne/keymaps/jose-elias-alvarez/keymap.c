@@ -10,7 +10,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_GRV,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
         KC_EQL,  MOD_A,   MOD_S,   MOD_D,   MOD_F,   KC_G,       KC_H,    MOD_J,   MOD_K,   MOD_L,   MOD_SC,  KC_QUOT,
         KC_LBRC, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RBRC,
-                                   CW_TOGG, OS_LSFT, NAV_TAB,    SYM_BS,  NUM_SP,  KC_BSLS
+                                   KC_BSLS, OS_LSFT, NAV_TAB,    SYM_BS,  NUM_SP,  CW_TOGG
         ),
     [_NAV] = LAYOUT_split_3x6_3(
         QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
