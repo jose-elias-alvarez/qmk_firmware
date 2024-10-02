@@ -31,3 +31,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    XXXXXXX, KC_LPRN,    KC_RPRN,    XXXXXXX, XXXXXXX, XXXXXXX
         ),
 };
+// clang-format on
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case NAV_TAB:
+            return 115;
+        default:
+            return TAPPING_TERM;
+    }
+}
