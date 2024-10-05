@@ -110,14 +110,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("```");
             }
             break;
-        case CUT:
-            if (record->event.pressed) {
-                SEND_STRING(SS_LGUI("x"));
-            }
-            break;
         case COPY:
             if (record->event.pressed) {
                 SEND_STRING(SS_LGUI("c"));
+            }
+            break;
+        case CUT:
+            if (record->event.pressed) {
+                SEND_STRING(SS_LGUI("x"));
             }
             break;
         case PASTE:
