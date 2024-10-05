@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "features/achordion.h"
 
 enum layers {
     _BASE, //
@@ -100,6 +101,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!process_achordion(keycode, record)) {
+        return false;
+    }
     switch (keycode) {
         case TRI_GRV:
             if (record->event.pressed) {
@@ -129,3 +133,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 };
+
+void matrix_scan_user(void) {
+    achordion_task();
+}
+
+bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
+    switch (tap_hold_keycode) {
+        case MOD_A:
+        case MOD_S:
+        case MOD_D:
+        case MOD_F:
+        case MOD_J:
+        case MOD_K:
+        case MOD_L:
+        case MOD_SC:
+            return achordion_opposite_hands(tap_hold_record, other_record);
+    }
+    return true;
+}

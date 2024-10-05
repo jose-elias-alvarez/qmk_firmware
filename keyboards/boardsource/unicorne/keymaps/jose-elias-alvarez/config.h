@@ -2,5 +2,8 @@
 
 #define TAPPING_TERM 155
 #define TAPPING_TERM_PER_KEY
+#define PERMISSIVE_HOLD
+
+#define ACHORDION_STREAK
 
 #define COMBO_TERM 40
