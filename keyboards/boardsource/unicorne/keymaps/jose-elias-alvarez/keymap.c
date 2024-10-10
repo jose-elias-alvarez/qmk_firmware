@@ -46,6 +46,9 @@ const uint16_t PROGMEM jk_combo[]     = {MOD_J, MOD_K, COMBO_END};
 const uint16_t PROGMEM comdot_combo[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM ul_combo[]     = {KC_GRV, KC_Q, COMBO_END};
 const uint16_t PROGMEM ml_combo[]     = {KC_MINS, MOD_A, COMBO_END};
+const uint16_t PROGMEM bl_combo[]     = {CW_TOGG, KC_Z, COMBO_END};
+const uint16_t PROGMEM tr_combo[]     = {KC_P, KC_LBRC, COMBO_END};
+const uint16_t PROGMEM mr_combo[]     = {MOD_SC, KC_QUOT, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(df_combo, KC_ENT),
@@ -53,6 +56,9 @@ combo_t key_combos[] = {
     COMBO(comdot_combo, ARROW),
     COMBO(ul_combo, LGUI(KC_SPC)),
     COMBO(ml_combo, LALT(KC_SPC)),
+    COMBO(bl_combo, LALT(LGUI(KC_SPC))),
+    COMBO(tr_combo, LALT(LGUI(KC_QUOT))),
+    COMBO(mr_combo, LALT(LGUI(KC_SCLN))),
 };
 
 // clang-format off
