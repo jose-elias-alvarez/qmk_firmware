@@ -44,11 +44,15 @@ enum custom_keycodes {
 const uint16_t PROGMEM df_combo[]     = {MOD_D, MOD_F, COMBO_END};
 const uint16_t PROGMEM jk_combo[]     = {MOD_J, MOD_K, COMBO_END};
 const uint16_t PROGMEM comdot_combo[] = {KC_COMM, KC_DOT, COMBO_END};
+const uint16_t PROGMEM ul_combo[]     = {KC_GRV, KC_Q, COMBO_END};
+const uint16_t PROGMEM ml_combo[]     = {KC_MINS, MOD_A, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(df_combo, KC_ENT),
     COMBO(jk_combo, KC_ESC),
     COMBO(comdot_combo, ARROW),
+    COMBO(ul_combo, LGUI(KC_SPC)),
+    COMBO(ml_combo, LALT(KC_SPC)),
 };
 
 // clang-format off
