@@ -21,6 +21,7 @@ enum custom_keycodes {
 };
 
 #define OS_LSFT OSM(MOD_LSFT)
+#define HYPR_G HYPR_T(KC_G)
 
 // layers
 #define NAV_TAB LT(_NAV, KC_TAB)
@@ -65,13 +66,13 @@ combo_t key_combos[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_split_3x6_3(
         KC_GRV,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
-        KC_MINS, MOD_A,   MOD_S,   MOD_D,   MOD_F,   KC_G,       KC_H,    MOD_J,   MOD_K,   MOD_L,   MOD_SC,  KC_QUOT,
+        KC_MINS, MOD_A,   MOD_S,   MOD_D,   MOD_F,   HYPR_G,     KC_H,    MOD_J,   MOD_K,   MOD_L,   MOD_SC,  KC_QUOT,
         CW_TOGG, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RBRC,
                                    SYS_BSL, OS_LSFT, NAV_TAB,    SYM_BS,  NUM_SP,  FN
         ),
     [_NAV] = LAYOUT_split_3x6_3(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, KC_LALT, KC_LCTL, KC_LSFT, KC_LGUI, XXXXXXX,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX,
+        XXXXXXX, KC_LALT, KC_LCTL, KC_LSFT, KC_LGUI, KC_HYPR,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, CUT,     COPY,    PASTE,   XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                    XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX
         ),
