@@ -8,7 +8,8 @@ combo_t key_combos[] = {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // clockwise starting from upper left
-    [0] = LAYOUT(KC_BTN4, KC_BTN5, KC_BTN3, DRAG_SCROLL, KC_BTN1, KC_BTN2)};
+    [0] = LAYOUT(KC_BTN4, KC_BTN5, KC_BTN3, DRAG_SCROLL, KC_BTN1, KC_BTN2),
+};
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {

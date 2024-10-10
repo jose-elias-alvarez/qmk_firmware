@@ -1,8 +1,9 @@
 #include QMK_KEYBOARD_H
+
 #include "features/achordion.h"
 
 enum layers {
-    _BASE, //
+    _BASE,
     _NAV,
     _SYS,
     _NUM,
