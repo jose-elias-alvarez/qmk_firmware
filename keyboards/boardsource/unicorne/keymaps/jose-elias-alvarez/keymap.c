@@ -13,8 +13,7 @@ enum layers {
 
 // custom keys
 enum custom_keycodes {
-    TRI_GRV = SAFE_RANGE, //
-    COPY,
+    COPY = SAFE_RANGE, //
     CUT,
     PASTE,
     ARROW,
@@ -45,7 +44,7 @@ enum custom_keycodes {
 const uint16_t PROGMEM df_combo[]     = {MOD_D, MOD_F, COMBO_END};
 const uint16_t PROGMEM jk_combo[]     = {MOD_J, MOD_K, COMBO_END};
 const uint16_t PROGMEM comdot_combo[] = {KC_COMM, KC_DOT, COMBO_END};
-const uint16_t PROGMEM ul_combo[]     = {KC_GRV, KC_Q, COMBO_END};
+const uint16_t PROGMEM ul_combo[]     = {KC_EQL, KC_Q, COMBO_END};
 const uint16_t PROGMEM ml_combo[]     = {KC_MINS, MOD_A, COMBO_END};
 const uint16_t PROGMEM bl_combo[]     = {CW_TOGG, KC_Z, COMBO_END};
 const uint16_t PROGMEM tr_combo[]     = {KC_P, KC_LBRC, COMBO_END};
@@ -65,7 +64,7 @@ combo_t key_combos[] = {
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_split_3x6_3(
-        KC_GRV,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
+        KC_EQL,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
         KC_MINS, MOD_A,   MOD_S,   MOD_D,   MOD_F,   HYPR_G,     KC_H,    MOD_J,   MOD_K,   MOD_L,   MOD_SC,  KC_QUOT,
         CW_TOGG, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RBRC,
                                    SYS_BSL, OS_LSFT, NAV_TAB,    SYM_BS,  NUM_SP,  FN
@@ -83,15 +82,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX
         ),
     [_SYM] = LAYOUT_split_3x6_3(
-        TRI_GRV, XXXXXXX, KC_AMPR, KC_ASTR, KC_LPRN, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, KC_DLR,  KC_PERC, KC_CIRC, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, KC_GRV,  KC_AMPR, KC_ASTR, KC_LPRN, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, KC_TILD, KC_DLR,  KC_PERC, KC_CIRC, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                    XXXXXXX, KC_LPRN, KC_RPRN,    XXXXXXX, XXXXXXX, XXXXXXX
         ),
     [_NUM] = LAYOUT_split_3x6_3(
-        XXXXXXX, XXXXXXX, KC_7,    KC_8,    KC_9,    KC_PLUS,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    KC_EQL,     XXXXXXX, KC_RGUI, KC_RSFT, KC_RCTL, KC_RALT, XXXXXXX,
-        XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    KC_MINS,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        _______, XXXXXXX, KC_7,    KC_8,    KC_9,    XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        _______, XXXXXXX, KC_4,    KC_5,    KC_6,    XXXXXXX,    XXXXXXX, KC_RGUI, KC_RSFT, KC_RCTL, KC_RALT, XXXXXXX,
+        XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                    XXXXXXX, KC_0,    KC_0,       XXXXXXX, XXXXXXX, XXXXXXX
         ),
     [_FN] = LAYOUT_split_3x6_3(
@@ -117,11 +116,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
     }
     switch (keycode) {
-        case TRI_GRV:
-            if (record->event.pressed) {
-                SEND_STRING("```");
-            }
-            break;
         case COPY:
             if (record->event.pressed) {
                 SEND_STRING(SS_LGUI("c"));
