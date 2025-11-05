@@ -3,9 +3,7 @@
 #include QMK_KEYBOARD_H
 
 enum tap_dance_ids {
-    TD_GRV_TRIPLE,
-    TD_TAB_SWITCH,
-    TD_LALT_LAUNCHER,
+    TD_CAPS,
     TD_NUM_1,
     TD_NUM_2,
     TD_NUM_3,
@@ -21,9 +19,7 @@ enum tap_dance_ids {
     TAP_DANCE_LEN,
 };
 
-#define GRV_TRP TD(TD_GRV_TRIPLE)
-#define TAB_SWC TD(TD_TAB_SWITCH)
-#define ALT_LCH TD(TD_LALT_LAUNCHER)
+#define CAPS TD(TD_CAPS)
 #define NUM_F1 TD(TD_NUM_1)
 #define NUM_F2 TD(TD_NUM_2)
 #define NUM_F3 TD(TD_NUM_3)

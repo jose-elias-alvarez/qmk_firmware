@@ -1,28 +1,13 @@
 #include "tap_dance.h"
 #include "process_tap_dance.h"
 
-static void dance_grv_triple(tap_dance_state_t *state, void *user_data) {
-    SEND_STRING(state->count >= 2 ? "```" : "`");
-    reset_tap_dance(state);
-}
-
-static void dance_tab_switch(tap_dance_state_t *state, void *user_data) {
-    tap_code16(state->count >= 2 ? LALT(KC_TAB) : KC_TAB);
-    reset_tap_dance(state);
-}
-
-static void dance_lalt_finished(tap_dance_state_t *state, void *user_data) {
+static void dance_caps(tap_dance_state_t *state, void *user_data) {
     if (state->count >= 2) {
-        tap_code16(LAG(KC_SPC));
+        SEND_STRING(SS_TAP(X_CAPS));
     } else {
-        register_code(KC_LALT);
+        caps_word_toggle();
     }
-}
-
-static void dance_lalt_reset(tap_dance_state_t *state, void *user_data) {
-    if (state->count < 2) {
-        unregister_code(KC_LALT);
-    }
+    reset_tap_dance(state);
 }
 
 typedef struct {
@@ -58,19 +43,17 @@ static tap_dance_tap_hold_t num_tap_hold_configs[] = {
 };
 
 tap_dance_action_t tap_dance_actions[TAP_DANCE_LEN] = {
-    [TD_GRV_TRIPLE]    = ACTION_TAP_DANCE_FN(dance_grv_triple),
-    [TD_TAB_SWITCH]    = ACTION_TAP_DANCE_FN(dance_tab_switch),
-    [TD_LALT_LAUNCHER] = ACTION_TAP_DANCE_FN_ADVANCED_WITH_RELEASE(NULL, NULL, dance_lalt_finished, dance_lalt_reset),
-    [TD_NUM_1]         = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[0]},
-    [TD_NUM_2]         = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[1]},
-    [TD_NUM_3]         = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[2]},
-    [TD_NUM_4]         = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[3]},
-    [TD_NUM_5]         = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[4]},
-    [TD_NUM_6]         = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[5]},
-    [TD_NUM_7]         = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[6]},
-    [TD_NUM_8]         = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[7]},
-    [TD_NUM_9]         = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[8]},
-    [TD_NUM_0]         = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[9]},
-    [TD_NUM_MINS]      = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[10]},
-    [TD_NUM_EQL]       = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[11]},
+    [TD_CAPS]     = ACTION_TAP_DANCE_FN(dance_caps),
+    [TD_NUM_1]    = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[0]},
+    [TD_NUM_2]    = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[1]},
+    [TD_NUM_3]    = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[2]},
+    [TD_NUM_4]    = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[3]},
+    [TD_NUM_5]    = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[4]},
+    [TD_NUM_6]    = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[5]},
+    [TD_NUM_7]    = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[6]},
+    [TD_NUM_8]    = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[7]},
+    [TD_NUM_9]    = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[8]},
+    [TD_NUM_0]    = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[9]},
+    [TD_NUM_MINS] = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[10]},
+    [TD_NUM_EQL]  = {.fn = {NULL, dance_num_finished, dance_num_reset, NULL}, .user_data = &num_tap_hold_configs[11]},
 };
