@@ -215,5 +215,6 @@
             { "flags": 4, "matrix": [4, 13], "x": 201, "y": 56 },
             { "flags": 4, "matrix": [4, 14], "x": 215, "y": 56 }
         ]
-    }
+    },
+    "modules": ["tzarc/globe_key"]
 }
